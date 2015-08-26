@@ -1,6 +1,7 @@
-###`drawImage()`
-API: https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage
+1.[drawImage](#1-drawImage)
+2.[clearRect](#2-clearRect)
 
+###1 `drawImage`
 > 在 canvas 上绘制图片
 
 语法：
@@ -25,3 +26,21 @@ ctx.drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight );
 |    sWidth    |  需要绘制到目标上下文中的，源图像的矩形选择框的宽度。     |
 |    sHeight    |  需要绘制到目标上下文中的，源图像的矩形选择框的高度。     |
 ![canvas drawImage](pic/Canvas_drawimage.jpg)
+
+###2 `clearRect`
+> 在 canvas 上绘制图片
+
+语法：
+```
+ctx.clearRect(x, y, width, height);
+```
+
+参数值：
+
+
+| 参数 | 描述 |
+|--------|--------|
+|    x    |   要清除的矩形左上角的 x 坐标     |
+|    y    |   要清除的矩形左上角的 y 坐标     |
+|    width    |   要清除的矩形的宽度     |
+|    height    |   要清除的矩形的高度     |
