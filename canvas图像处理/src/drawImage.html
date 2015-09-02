@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -19,18 +19,18 @@
 	</canvas>
 
 <script>
-	var canvas = document.getElementById('canvas');
-	var ctx = canvas.getContext('2d');
-	var img = new Image();
+	var canvas = document.getElementById('canvas'),
+		ctx = canvas.getContext('2d'),
+		img = new Image();
 
-	window.onload = function() {
 		canvas.width = 800;
-		canvas.height = 600;
+		canvas.height = 450;
 
-		img.src = 'img/naruto.jpg';
-		img.onload = function() {
-		 	ctx.drawImage(img, 100, 50, 400, 270, 50, 50, 400, 270 );
-		}
+	img.src = 'img/naruto.jpg';
+	img.onload = function() {
+	 	// ctx.drawImage(img, 0, 0 );
+	 	// ctx.drawImage(img, 0, 0, 700, 700 );
+	 	ctx.drawImage(img, 100, 50, 400, 400, 50, 50, 400, 400 );
 	}
 </script>
 </body>

@@ -1,6 +1,3 @@
-1.[drawImage](#1-drawImage)
-2.[clearRect](#2-clearRect)
-
 ###1 `drawImage`
 > 在 canvas 上绘制图片
 
@@ -44,3 +41,12 @@ ctx.clearRect(x, y, width, height);
 |    y    |   要清除的矩形左上角的 y 坐标     |
 |    width    |   要清除的矩形的宽度     |
 |    height    |   要清除的矩形的高度     |
+
+###3. 离屏canvas
+>离屏canvas经常用来存放临时性的图像信息
+
+使离屏canvas遵循的四个步骤：
+1. 创建用做离屏canvas的元素
+2. 设置离屏canvas的宽度与高度
+3. 在离屏canvas之中进行绘制
+4. 将离屏canvas的全部或者一部分内容复制到正在显示的canvas之中
