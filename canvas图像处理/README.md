@@ -79,3 +79,19 @@ ctx.getImageData(sx, sy, sw, sh);
 |    width    |   使用像素描述`ImageData`的实际宽度    |
 |    height    |   使用像素描述`ImageData`的实际高度     |
 |    data    |  描述了一个一维数组，包含以 RGBA 顺序的数据，数据使用  0 至 255（包含）的整数表示。     |
+
+**imageData.data**
+![imageData.data](pic/imageData.png)
+
+第i个像素
+R： `imageData.data[4 * i + 0]`
+G： `imageData.data[4 * i + 1]`
+B： `imageData.data[4 * i + 2]`
+A： `imageData.data[4 * i + 3]`
+
+坐标（x,y）,y行x列
+`i = y*width + x`
+R： `imageData.data[4 * i + 0]`
+G： `imageData.data[4 * i + 1]`
+B： `imageData.data[4 * i + 2]`
+A： `imageData.data[4 * i + 3]`
