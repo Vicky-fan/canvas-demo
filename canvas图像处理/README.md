@@ -46,6 +46,7 @@ ctx.clearRect(x, y, width, height);
 >离屏canvas经常用来存放临时性的图像信息
 
 使离屏canvas遵循的四个步骤：
+
 1. 创建用做离屏canvas的元素
 （`var offscreenCanvas = document.createElement('canvas');`创建一个不从属于任何DOM元素的canvas对象，因此该canvas是不可见的，这也是它为何被叫做离屏canvas的原因）
 2. 设置离屏canvas的宽度与高度
@@ -84,14 +85,25 @@ ctx.getImageData(sx, sy, sw, sh);
 ![imageData.data](pic/imageData.png)
 
 第i个像素
+
 R： `imageData.data[4 * i + 0]`
+
 G： `imageData.data[4 * i + 1]`
+
 B： `imageData.data[4 * i + 2]`
+
 A： `imageData.data[4 * i + 3]`
 
+
 坐标（x,y）,y行x列
+
 `i = y*width + x`
+
 R： `imageData.data[4 * i + 0]`
+
 G： `imageData.data[4 * i + 1]`
+
 B： `imageData.data[4 * i + 2]`
+
 A： `imageData.data[4 * i + 3]`
+
