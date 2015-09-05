@@ -48,6 +48,7 @@
 				pixel = ctx.getImageData(point.x, point.y, 1, 1),
 				data = pixel.data,
 				rgba = 'rgba(' + data[0] + ',' + data[1] + ',' + data[2] + ',' + data[3] + ')';
+				console.log(point);
 			color.style.background = rgba;
 			color.textContent = rgba;
 

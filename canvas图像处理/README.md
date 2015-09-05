@@ -84,26 +84,43 @@ ctx.getImageData(sx, sy, sw, sh);
 **imageData.data**
 ![imageData.data](pic/imageData.png)
 
-第i个像素
+第i个像素  
+R： `imageData.data[4 * i + 0]`  
+G： `imageData.data[4 * i + 1]`  
+B： `imageData.data[4 * i + 2]`  
+A： `imageData.data[4 * i + 3]`  
 
-R： `imageData.data[4 * i + 0]`
+坐标（x,y）,y行x列  
+`i = y*width + x`  
+R： `imageData.data[4 * i + 0]`  
+G： `imageData.data[4 * i + 1]`  
+B： `imageData.data[4 * i + 2]`  
+A： `imageData.data[4 * i + 3]`  
 
-G： `imageData.data[4 * i + 1]`
+####4.3 `toDataURL()`
+>将canvas画布转化成png，jpeg，base64编码等格式的image。
+>返回一个data URIs,包含由类型参数指定的格式表示的图像（默认为PNG）。返回的图像是在96 dpi的分辨率。
 
-B： `imageData.data[4 * i + 2]`
+```
+canvas.toDataURL(type, encoderOptions);
+```
+如：
+```
+ar canvas = document.getElementById("canvas");
+var dataURL = canvas.toDataURL();
+console.log(dataURL);
+// "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNby
+// blAAAADElEQVQImWNgoBMAAABpAAFEI8ARAAAAAElFTkSuQmCC"
 
-A： `imageData.data[4 * i + 3]`
+var fullQuality = canvas.toDataURL("image/jpeg", 1.0);
+// data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ...9oADAMBAAIRAxEAPwD/AD/6AP/Z"
+var mediumQuality = canvas.toDataURL("image/jpeg", 0.5);
+var lowQuality = canvas.toDataURL("image/jpeg", 0.1);
+```
+###4.4 `putImageData()`
+>将图像数据（从指定的 ImageData 对象）放回画布上
 
-
-坐标（x,y）,y行x列
-
-`i = y*width + x`
-
-R： `imageData.data[4 * i + 0]`
-
-G： `imageData.data[4 * i + 1]`
-
-B： `imageData.data[4 * i + 2]`
-
-A： `imageData.data[4 * i + 3]`
-
+```
+ctx.putImageData(imagedata, dx, dy);
+ctx.putImageData(imagedata, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight);
+```
