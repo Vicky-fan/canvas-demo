@@ -124,3 +124,19 @@ var lowQuality = canvas.toDataURL("image/jpeg", 0.1);
 ctx.putImageData(imagedata, dx, dy);
 ctx.putImageData(imagedata, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight);
 ```
+
+###5 `创建imageData`
+```
+ImageData ctx.createImageData(width, height);
+ImageData ctx.createImageData(imagedata);
+```
+
+>I 创建一个 新的、空白的、指定大小的 ImageData 对象。 所有的像素在新对象中都是透明的。
+
+| 属性 | 描述 |
+|--------|--------|
+|    width    |   ImageData 新对象的宽度    |
+|    height    |   mageData 新对象的高度     |
+|    data    |  从现有的 ImageData 对象中，复制一个和其宽度和高度相同的对象。图像自身不允许被复制。     |
+
+返回值：指定了宽度和高度的，新的 ImageData 对象。 新对象使用透明的像素进行填充。

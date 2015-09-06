@@ -8,39 +8,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Keywords" content="">
     <meta name="description" content="">
-    <title> drawImage </title>
+    <title> filter </title>
     <link href="css/global.css" rel="stylesheet">
 </head>
 	<style>
 		.effectTxt {
 			margin: 0 auto;
-			text-align: center;
+			clear: both;
+			width: 1100px;
 		}
 		.effectTxt a {
 			margin: 0 10px;
 		}
 	</style>
 <body>
-
-	<canvas id="canvas" style="margin: 10px; padding: 0; border: 1px solid #ccc;" width="500" height="350">
-		您的浏览器尚不支持canvas
-	</canvas>
-	<canvas id="canvas2" style="margin: 10px; padding: 0; border: 1px solid #ccc;" width="500" height="350">
-		您的浏览器尚不支持canvas
-	</canvas>
+	<div style="margin: 20px auot; width: 1200px;">
+		<canvas id="canvasa" style="margin: 10px; padding: 0; border: 1px solid #ccc;float:left;" width="500" height="350">
+			您的浏览器尚不支持canvas
+		</canvas>
+		<canvas id="canvasb" style="margin: 10px; padding: 0; border: 1px solid #ccc;float: left;" width="500" height="350">
+			您的浏览器尚不支持canvas
+		</canvas>
+	</div>
 	<div class="effectTxt">
-		<a href="#" id="filter">filter</a>
+		<a href="#" id="filter" onClick="greyEffect()">灰度</a>
+		<a href="#" id="filter" onClick="blackEffect()">黑白</a>
+		<a href="#" id="filter" onClick="reverseEffect()">底片</a>
 	</div>
 	
 
 <script>
-	var canvas = document.getElementById('canvas'),
-		ctx = canvas.getContext('2d'),
+	var canvasa = document.getElementById('canvasa'),
+		ctxa = canvasa.getContext('2d'),
+
+		canvasb = document.getElementById('canvasb'),
+		ctxb = canvasb.getContext('2d'),
+
 		img = new Image();
 
 	img.src = 'img/yuan.png';
 	img.onload = function() {
-		ctx.drawImage(img, 0, 0)
+		ctxa.drawImage(img, 0, 0, canvasa.width, canvasa.height);
+	}
+
+	function greyEffect() {
+		var imageData = ctxa.getImageData(0, 0, canvasa.width, canvasa.height),
+			pixelData = imageData.data;
+		for (var i=0; i< canvasa.width*canvasa.height; i++) {
+			var r = pixelData[i*4+0],
+				g = pixelData[i*4+1],
+				b = pixelData[i*4+2],
+
+				grey = r*0.3 + g*0.59 + b*0.11;
+
+				pixelData[i*4+0] = grey;
+				pixelData[i*4+1] = grey;
+				pixelData[i*4+2] = grey;
+		}
+		ctxb.putImageData(imageData, 0, 0, 0, 0, canvasb.width, canvasb.height);
+	}
+
+	function blackEffect() {
+		var imageData = ctxa.getImageData(0, 0, canvasa.width, canvasa.height),
+			pixelData = imageData.data,
+			pv = 0;
+		for (var i=0; i<canvasa.width*canvasa.height; i++) {
+			var r = pixelData[i*4+0],
+				g = pixelData[i*4+1],
+				b = pixelData[i*4+2],
+
+				avg = (r + g + b) / 3;
+
+				if (avg > 128) {
+					pv = 255;
+				} else {
+					pv = 0;
+				}
+
+			pixelData[i*4+0] = pv;
+			pixelData[i*4+1] = pv;
+			pixelData[i*4+2] = pv;
+		}
+
+		ctxb.putImageData(imageData, 0, 0, 0, 0, canvasb.width, canvasb.height);
+	}
+
+	function reverseEffect() {
+		var imageData = ctxa.getImageData(0, 0, canvasa.width, canvasa.height),
+			pixelData = imageData.data;
+		for (var i=0; i<canvasa.width*canvasa.height; i++) {
+			var r = pixelData[i*4+0],
+				g = pixelData[i*4+1],
+				b = pixelData[i*4+2];
+
+			pixelData[i*4+0] = 255 - r;
+			pixelData[i*4+1] = 255 - g;
+			pixelData[i*4+2] = 255 - b;
+		}
+
+		ctxb.putImageData(imageData, 0, 0, 0, 0, canvasb.width, canvasb.height);
 	}
 
 </script>
